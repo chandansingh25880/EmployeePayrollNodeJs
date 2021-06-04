@@ -20,7 +20,6 @@ class UserService {
         });
     }
 
-
     findDataId = (employeObjectId, callback) => {
         employeeModel.findDataId(employeObjectId, (error, data) => {
             return (error) ? callback(error, null) : callback(null, data);
