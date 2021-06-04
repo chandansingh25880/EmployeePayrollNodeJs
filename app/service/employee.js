@@ -13,7 +13,6 @@ class UserService {
             return (error) ? callback(error, null) : callback(null, data);
         })
     }
-
    
     findAllEmployees = (callback) => {
         employeeModel.findAllEmployees((error, data) => {
