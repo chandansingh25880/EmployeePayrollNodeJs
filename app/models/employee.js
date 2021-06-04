@@ -1,0 +1,85 @@
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
+const EmployeeSchema = mongoose.Schema({
+    firstName: { type: String, required: true, validate: /^[a-zA-Z ]{3,30}$/ },
+    lastName: { type: String, required: true, validate: /^[a-zA-Z ]{3,30}$/ },
+    emailId: { type: String, required: true, validate: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9]+[.]+[a-zA-Z]+$/ },
+    password: { type: String, required: true }
+}, {
+    timestamps: false
+});
+
+const Employee = mongoose.model('Employee', EmployeeSchema)
+
+class UserDetail {
+
+   /**
+    * @description Create method is to save the new Employee Data
+    * @param userdData is data sent from Services
+    * @return callback is used to callback the Services which  includes error msg or data
+    */
+    create = (userdata, callback) => {
+        console.log("creating data")
+        const employee = new Employee({
+            firstName: userdata.firstName,
+            lastName: userdata.lastName,
+            emailId: userdata.emailId,
+            password: userdata.password
+        });
+        employee.save({}, (error, data) => {
+            return (error) ? callback(error, null) : callback(null, data);
+        });
+    }
+
+    /**
+    * @description retrive all the Employee Data from MongoDB
+    * @param callback is data sent from Services
+    * @return callback is used to callback Services with data or error message
+    */
+    findAllEmployees = (callback) => {
+        Employee.find({}, (error, data) => {
+            return (error) ? callback(error, null) : callback(null, data);
+        });
+    }
+
+   /**
+    * @description retrive all the Employee Data from MongoDB
+    * @param objectId, callback is data sent from Service
+    * @return callback is used to callback the Services with data or error message
+    */
+    findDataId = (employeObjectId, callback) => {
+        Employee.findById(employeObjectId, (error, data) => {
+            return (error) ? callback(error, null) : callback(null, data);
+        })
+    }
+
+    /**
+    * @description delete the Employee Data from MongoDB
+    * @param objectId, callback is data sent from Services
+    * @return callback is used to callback Services with or without error message
+    */
+    deleteDataUsingId = (userDataID, callback) => {
+        Employee.findByIdAndRemove(userDataID, error => {
+            return (error) ? callback(error) : callback(null);
+        })
+    }
+
+   /**
+    * @description Update the Registration_Data by Id
+    * @param oldregistration_Id, New_UserData and callback
+    * @return callback is used to callback Services with data or error message
+    */
+    updateById = (userId, newUserData, callback) => {
+        Employee.findByIdAndUpdate(userId, {
+            firstName: newUserData.firstName,
+            lastName: newUserData.lastName,
+            email: newUserData.email,
+            password: newUserData.password
+        }, { new: true }, (error, data) => {
+            return (error) ? callback(error, null) : callback(null, data);
+        });
+    }
+
+}
+module.exports=new UserDetail();
