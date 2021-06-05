@@ -30,7 +30,7 @@ class Controll {
             })
         })
     }
-
+    
    /**
      * @description find all the Employee Data
      * @param req is request sent from http
