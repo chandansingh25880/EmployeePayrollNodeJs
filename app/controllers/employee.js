@@ -132,4 +132,4 @@ class Controll {
     };
     
 }
-    module.exports = new Controll();
+      module.exports = new Controll();
