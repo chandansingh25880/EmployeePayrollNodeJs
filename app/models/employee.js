@@ -94,4 +94,5 @@ class UserDetail {
         })
     }
 }
+
 module.exports=new UserDetail();
