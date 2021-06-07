@@ -80,6 +80,18 @@ class UserDetail {
             return (error) ? callback(error, null) : callback(null, data);
         });
     }
-
+     /**
+    * @description Get the data by emailID
+    * @param loginData having emailId and password
+    * @return callback is used to callback Services with data or error message
+    */
+      checkLoginDetails = (credentials, callback) => {
+        Employee.findOne({ "emailId": credentials.emailId }, (error, data) => {
+            if (error) {
+                return callback(error, null)
+            }
+            return (!data) ? callback("UserId doesn't exist", null) : callback(null, data);
+        })
+    }
 }
 module.exports=new UserDetail();

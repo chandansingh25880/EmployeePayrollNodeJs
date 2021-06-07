@@ -2,6 +2,7 @@ const employeeModel = require('../models/employee.js');
 const { genSaltSync, hashSync } = require("bcrypt");
 const bcrypt = require('bcrypt');
 require("dotenv").config();
+const helper = require('../middleware/helper.js');
 
 class UserService {
 
@@ -41,5 +42,25 @@ class UserService {
             return (error) ? callback(error, null) : callback(null, data);
         })
     }
+
+     /**
+   * @description checkLogindetails used to validate the username and password
+   * @param loginData having emailId and password
+   * @return callback is used to callback controller with JsonWebToken or error message
+   */
+      checkLoginDetails = (credentials, callback) => {
+        employeeModel.checkLoginDetails(credentials, (error, data) => {
+            if (error) {
+                return callback(error, null);
+            }
+            else if (helper.checkPassword(credentials.password,data.password)) {              
+                    let token = helper.generateToken(data.emailId, "5m");
+                    return (!token) ? callback("Something went wrong while generating JWT", null) : callback(null, token)                             
+            }
+            return callback("Invalid Credentials", null);
+        });
+    }
 }
+
+
 module.exports = new UserService();

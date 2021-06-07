@@ -1,19 +1,23 @@
 const controllerEmployee = require('../controllers/employee.js');
-
+const helper = require('../middleware/helper.js');
 module.exports = (app) => {
 
-    // Create a new employee
-    app.post('/add', controllerEmployee.create);
- 
-    // Retrieve all the employees
-    app.get('/employees', controllerEmployee.findAllEmployees);
+  // Create a new employee
+  app.post('/add', controllerEmployee.create);
 
-    // Retrieve a single employee with employeeId
-    app.get('/employees/:employeeId', controllerEmployee.findOne);
+  // Retrieve all employees
+  app.get('/employees', helper.checkToken,controllerEmployee.findAllEmployees);
 
-    // Update a employee with employeeId
-    app.put('/update/:employeeId', controllerEmployee.update);
+  // Retrieve a single employee with employeeId
+  app.get('/employees/:employeeId',helper.checkToken, controllerEmployee.findOneData);
 
-    // Delete a employee with employeeId
-    app.delete('/delete/:employeeId', controllerEmployee.delete);
+  // Update a employee with employeeId
+  app.put('/update/:employeeId',helper.checkToken , controllerEmployee.update);
+
+  // Delete a employee with employeeId
+  app.delete('/delete/:employeeId',helper.checkToken ,controllerEmployee.delete);
+
+  // login employee with emailId and Password
+  app.post('/login', controllerEmployee.login);
+  
 }
