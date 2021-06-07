@@ -23,5 +23,5 @@ require('./app/routers/employee')(app);
 
 // listen for requests
 app.listen(process.env.SERVER_PORT, () => {
-    console.log("Server is listening on port "+process.env.SERVER_PORT);
+    console.log("Server is listening on the port "+process.env.SERVER_PORT);
 });
