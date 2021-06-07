@@ -20,5 +20,4 @@ module.exports = (app) => {
   // login employee with emailId and Password
   app.post('/login', controllerEmployee.login);
  
-  
 }
