@@ -53,7 +53,7 @@ class Controll {
      * @param req is request sent from http
      * @param res is used to send the Response
      */
-    findOne = (req, res) => {
+    findOneData = (req, res) => {
         let employeObjectId=req.params.employeeId;
         employeeService.findDataId(employeObjectId, (error, userData) => {
             if (error) {
@@ -121,7 +121,7 @@ class Controll {
                     });
                 }
                 return res.status(500).send({
-                    message: "Error occured while updating employeeID with " + existingUserId
+                    message: "Error occured while the updating employeeID with " + existingUserId
                 });
             }
             res.send({
@@ -130,6 +130,29 @@ class Controll {
             })
         })
     };
-    
+
+    /**
+     * @description to login the Employee Data
+     * @param req is request sent from http having emailId and Password
+     * @param res is used to send the Response
+     */
+     login = (req, res) => {
+        let credentials = req.body;
+        employeeService.checkLoginDetails(credentials, (error, data) => {
+            if (error) {
+                return res.status(404).send({
+                    success: false,
+                    message: error
+                });
+            }
+            res.send({
+                success: true,
+                message: "loged in successfully",
+                token: data
+            });
+        })
+    }
 }
-    module.exports = new Controll();
+
+module.exports = new Controll();
+    

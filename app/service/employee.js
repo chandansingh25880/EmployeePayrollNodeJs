@@ -2,6 +2,7 @@ const employeeModel = require('../models/employee.js');
 const { genSaltSync, hashSync } = require("bcrypt");
 const bcrypt = require('bcrypt');
 require("dotenv").config();
+const helper = require('../middleware/helper.js');
 
 class UserService {
 
