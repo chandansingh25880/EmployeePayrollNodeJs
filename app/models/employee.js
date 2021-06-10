@@ -14,7 +14,7 @@ const Employee = mongoose.model('Employee', EmployeeSchema)
 
 class UserDetail {
 
-   /**
+   /*
     * @description Create method is to save the new Employee Data
     * @param userdData is data sent from Services
     * @return callback is used to callback the Services which  includes error msg or data
@@ -32,7 +32,7 @@ class UserDetail {
         });
     }
 
-    /**
+    /*
     * @description retrive all the Employee Data from MongoDB
     * @param callback is data sent from Services
     * @return callback is used to callback Services with data or error message
@@ -43,7 +43,7 @@ class UserDetail {
         });
     }
 
-   /**
+   /*
     * @description retrive all the Employee Data from MongoDB
     * @param objectId, callback is data sent from Service
     * @return callback is used to callback the Services with data or error message
@@ -54,7 +54,7 @@ class UserDetail {
         })
     }
 
-    /**
+    /*
     * @description delete the Employee Data from MongoDB
     * @param objectId, callback is data sent from Services
     * @return callback is used to callback Services with or without error message
@@ -65,7 +65,7 @@ class UserDetail {
         })
     }
 
-   /**
+   /*
     * @description Update the Registration_Data by Id
     * @param oldregistration_Id, New_UserData and callback
     * @return callback is used to callback Services with data or error message
@@ -80,7 +80,8 @@ class UserDetail {
             return (error) ? callback(error, null) : callback(null, data);
         });
     }
-     /**
+
+     /*
     * @description Get the data by emailID
     * @param loginData having emailId and password
     * @return callback is used to callback Services with data or error message

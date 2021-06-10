@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 require("dotenv").config();
-/*
- * function to connect mongoose database 
- * @returns connection
- */
+
+//  function to connect mongoose database 
+ 
 function dbconnect(){
 
     mongoose.promise;

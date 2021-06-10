@@ -46,7 +46,7 @@ class UserService {
      /**
    * @description checkLogindetails used to validate the username and password
    * @param loginData having emailId and password
-   * @return callback is used to callback controller with JsonWebToken or error message
+   * @return callback is used to callback the controller with JsonWebToken or error message
    */
       checkLoginDetails = (credentials, callback) => {
         employeeModel.checkLoginDetails(credentials, (error, data) => {
@@ -55,12 +55,11 @@ class UserService {
             }
             else if (helper.checkPassword(credentials.password,data.password)) {              
                     let token = helper.generateToken(data.emailId, "5m");
-                    return (!token) ? callback("Something went wrong while generating JWT", null) : callback(null, token)                             
+                    return (!token) ? callback("Something wrong while we generating JWT", null) : callback(null, token)                             
             }
             return callback("Invalid Credentials", null);
         });
     }
 }
-
 
 module.exports = new UserService();
