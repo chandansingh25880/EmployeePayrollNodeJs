@@ -1,0 +1,24 @@
+{
+    "data1": {
+        "emailId": "mohan@gmail.com",
+        "password": "Mohan1997@#"
+    },
+    "data2": {
+        "emailId": "raj@gmail.com",
+        "password": "Raj1997@#"
+    },
+    "data3": {
+        "firstName": "Chandan",
+        "lastName": "Singh",
+        "emailId": "chandan.1sep1997@gmail.com",
+        "password": "Chandan1997@#"
+    },
+    "data4": {
+        "firstName": "Ramesh",
+        "lastName": "Kashyap",
+        "emailId": "Kashyap@gmail.com"
+    },
+    "data5": {
+        "Id": "60c067d96890071fdc541940"
+    }        
+}
