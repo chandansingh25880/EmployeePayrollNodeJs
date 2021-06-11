@@ -134,13 +134,12 @@ describe("/GET /employees/Id", () => {
             .end((err, response) => {
                 response.should.have.status(200);
             //    response.body.should.have.property('success').eq(true);
-       //         response.body.should.have.property('foundData');
+            //  response.body.should.have.property('foundData');
                 done();
             });
     });
     
-    
-});
+}):
 
 
 
