@@ -1,5 +1,7 @@
 const express = require('express');
 const dbconnect = require('./config/database.js');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger/swagger.json');
 require("dotenv").config();
 // create express app
 const app = express();
@@ -20,6 +22,9 @@ app.get('/', (req, res) => {
 
 // Require Notes routes
 require('./app/routers/employee')(app);
+
+//swagger requests to app
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // listen for requests
  module.exports = 

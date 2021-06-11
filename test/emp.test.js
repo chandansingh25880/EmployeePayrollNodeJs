@@ -85,6 +85,7 @@ let empToken='';
 describe("/GET /employees", () => { 
     
     it("given valid token When retrived Should return status 200 and success=true", done => {
+        
         chai
             .request(server)
             .get("/employees")
@@ -133,12 +134,11 @@ describe("/GET /employees/Id", () => {
             .set('Authorization', 'Bearar ' + jwToken)
             .end((err, response) => {
                 response.should.have.status(200);
-            //    response.body.should.have.property('success').eq(true);
-       //         response.body.should.have.property('foundData');
+            // response.body.should.have.property('success').eq(true);
+            //  response.body.should.have.property('foundData');
                 done();
             });
     });
-    
     
 });
 
