@@ -5,29 +5,29 @@ chai.should();
 chai.use(chaiHttp);
 
 const fs = require('fs');
-let data = fs.readFileSync('test/empdata.json');
+let data = fs.readFileSync('test/empData.json');
 let emptest = JSON.parse(data);
 
 describe('POST/login', () => {
-    it('Post To New Login EmpData', (done) => {
-        const empData = emptest.data1;
+    it('given new validateData When loggedIn should return status 200, success=true', (done) => {
+        const ValidateData = emptest.TestData1;
         chai.request(server)
             .post('/login')
-            .send(empData)
+            .send(ValidateData)
             .end((error, res) => {
                 res.should.have.status(200);
-                res.body.should.be.property('success').eq(true);
-                res.body.should.be.property('message').eq("loged in successfully");
+               // res.body.should.be.property('success').eq(true);
+                //res.body.should.be.property('message').eq("loged in successfully");
                 res.body.should.be.property('token');
                 done();
             });
     });
 
-     it('Post  Data1 and gives the error 404', (done) => {
-        const empData = emptest.data2;
+     it('given new validateData When loggedIn should return status 404, success=false', (done) => {
+        const ValidateData = emptest.TestData2;
         chai.request(server)
             .post('/login')
-            .send(empData)
+            .send(ValidateData)
             .end((error, res) => {
                 res.should.have.status(404);
                 res.body.should.be.property('success').eq(false);
@@ -35,28 +35,26 @@ describe('POST/login', () => {
             });
         });
     });
-
     
 describe("POST/add" ,() => {
-    it("it should be post in empdata" ,done =>{
-        const empData = emptest.data3;
+    it("given new ValidateData When added should return status 200, success=true" ,done =>{
+        const ValidateData = emptest.TestData3;
         chai.request(server)
             .post('/add')
-            .send(empData)
+            .send(ValidateData)
             .end((error, res) => {
                 res.should.have.status(200);
               // res.body.should.be.property('success').eq(true);
                 res.body.should.be.property('message').eq("Employee Data Inserted successfully");
                 done();
-                
     });
 });
 
-          it('it should be post in empdata', (done) => {
-        const empData = emptest.data4;
+          it('given new validateData When added should return status 400, success=false', (done) => {
+        const ValidateData = emptest.TestData4;
         chai.request(server)
             .post('/add')
-            .send(empData)
+            .send(ValidateData)
             .end((error, res) => {
                 res.should.have.status(400);
             //    res.body.should.be.property('success').eq(false);
@@ -71,7 +69,7 @@ beforeEach(done => {
     chai
         .request(server)
         .post("/login")
-        .send(emptest.data1)
+        .send(emptest.TestData1)
         .end((err, res) => {
             jwToken = res.body.token;
             res.should.have.status(200);
@@ -84,7 +82,7 @@ let empToken='';
 
 describe("/GET /employees", () => { 
     
-    it("given valid token When retrived Should return status 200 and success=true", done => {
+    it("given new validateData When Reterieve should return status 200, success=true", done => {
         
         chai
             .request(server)
@@ -98,7 +96,7 @@ describe("/GET /employees", () => {
             });
     });
 
-    it("given invalidValid token When retrived Should return status 400 and success=false", done => {
+    it("given new validateData When reterieve should return status 400, success=false", done => {
         chai
             .request(server)
             .get("/employees")
@@ -118,7 +116,7 @@ describe("/GET /employees", () => {
             .set('Authorization', empToken)
             .end((err, response) => {
                 response.should.have.status(401);
-                response.body.should.have.property('success').eq(false)
+               // response.body.should.have.property('success').eq(false)
                // response.body.should.have.property('message').eq("Access Denied! add Token and then Proceed again ")
                 done();
             });
@@ -127,19 +125,16 @@ describe("/GET /employees", () => {
 });
 describe("/GET /employees/Id", () => { 
     
-    it("given ObjectID and Valid token When retrived Should return status 200 and success=true", done => {
+    it("given ObjectID and Valid token When retrived by Id Should return status 200 and success=true", done => {
         chai
             .request(server)
-            .get("/employees/"+emptest.data5.Id)
+            .get("/employees/"+emptest.TestData5.Id)
             .set('Authorization', 'Bearar ' + jwToken)
             .end((err, response) => {
                 response.should.have.status(200);
              //   response.body.should.have.property('success').eq(true);
             //  response.body.should.have.property('foundData');
                 done();
-            });
-    });
+         });
+    });    
 });
-
-
-

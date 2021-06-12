@@ -4,9 +4,10 @@
   "description": " Never miss a thing in Life. Take notes quickly. Organize and keep track of all your notes.",
   "main": "server.js",
   "scripts": {
-    "test": "mocha",
+    "test": "nyc mocha ./test/**/*.js --exit --inspect=0.0.0.0:9229 --timeout 120000",
     "start": "nodemon server.js"
   },
+  
   "keywords": [
     "Express",
     "RestAPI",
@@ -34,6 +35,7 @@
     "chai-http": "^4.3.0",
     "dotenv": "^10.0.0",
     "mocha": "^8.4.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0"
   }
 }

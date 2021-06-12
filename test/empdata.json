@@ -1,24 +1,27 @@
 {
-    "data1": {
+    "TestData1": {
         "emailId": "mohan@gmail.com",
         "password": "Mohan1997@#"
     },
-    "data2": {
+    "TestData2": {
         "emailId": "raj@gmail.com",
         "password": "Raj1997@#"
     },
-    "data3": {
+    "TestData3": {
         "firstName": "Chandan",
         "lastName": "Singh",
         "emailId": "chandan.1sep1997@gmail.com",
         "password": "Chandan1997@#"
     },
-    "data4": {
+    "TestData4": {
         "firstName": "Ramesh",
         "lastName": "Kashyap",
         "emailId": "Kashyap@gmail.com"
     },
-    "data5": {
+    "TestData5": {
         "Id": "60c067d96890071fdc541940"
-    }        
+    }  ,
+    "TestData6": {
+        "Id": "60c45bf31a06b63dd05a1d06"
+    }      
 }
