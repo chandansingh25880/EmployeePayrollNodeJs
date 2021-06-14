@@ -6,14 +6,14 @@ chai.use(chaiHttp);
 
 const fs = require('fs');
 let data = fs.readFileSync('test/empData.json');
-let emptest = JSON.parse(data);
+let empInput = JSON.parse(data);
 
 describe('POST/login', () => {
-    it('given new validateData When loggedIn should return status 200, success=true', (done) => {
-        const ValidateData = emptest.TestData1;
+    it('given new empData When loggedIn should return status 200, success=true', (done) => {
+        const empData = empInput.TestData1;
         chai.request(server)
             .post('/login')
-            .send(ValidateData)
+            .send(empData)
             .end((error, res) => {
                 res.should.have.status(200);
                // res.body.should.be.property('success').eq(true);
@@ -23,11 +23,11 @@ describe('POST/login', () => {
             });
     });
 
-     it('given new validateData When loggedIn should return status 404, success=false', (done) => {
-        const ValidateData = emptest.TestData2;
+     it('given new empData When loggedIn should return status 404, success=false', (done) => {
+        const empData = empInput.TestData2;
         chai.request(server)
             .post('/login')
-            .send(ValidateData)
+            .send(empData)
             .end((error, res) => {
                 res.should.have.status(404);
                 res.body.should.be.property('success').eq(false);
@@ -37,11 +37,11 @@ describe('POST/login', () => {
     });
     
 describe("POST/add" ,() => {
-    it("given new ValidateData When added should return status 200, success=true" ,done =>{
-        const ValidateData = emptest.TestData3;
+    it("given new empData When added should return status 200, success=true" ,done =>{
+        const empData = empInput.TestData3;
         chai.request(server)
             .post('/add')
-            .send(ValidateData)
+            .send(empData)
             .end((error, res) => {
                 res.should.have.status(200);
               // res.body.should.be.property('success').eq(true);
@@ -50,11 +50,11 @@ describe("POST/add" ,() => {
     });
 });
 
-          it('given new validateData When added should return status 400, success=false', (done) => {
-        const ValidateData = emptest.TestData4;
+          it('given new empData When added should return status 400, success=false', (done) => {
+        const empData = empInput.TestData4;
         chai.request(server)
             .post('/add')
-            .send(ValidateData)
+            .send(empData)
             .end((error, res) => {
                 res.should.have.status(400);
             //    res.body.should.be.property('success').eq(false);
@@ -69,7 +69,7 @@ beforeEach(done => {
     chai
         .request(server)
         .post("/login")
-        .send(emptest.TestData1)
+        .send(empInput.TestData1)
         .end((err, res) => {
             jwToken = res.body.token;
             res.should.have.status(200);
@@ -82,7 +82,7 @@ let empToken='';
 
 describe("/GET /employees", () => { 
     
-    it("given new validateData When Reterieve should return status 200, success=true", done => {
+    it("given new empData When Reterieve should return status 200, success=true", done => {
         
         chai
             .request(server)
@@ -96,7 +96,7 @@ describe("/GET /employees", () => {
             });
     });
 
-    it("given new validateData When reterieve should return status 400, success=false", done => {
+    it("given new empData When reterieve should return status 400, success=false", done => {
         chai
             .request(server)
             .get("/employees")
@@ -128,7 +128,7 @@ describe("/GET /employees/Id", () => {
     it("given ObjectID and Valid token When retrived by Id Should return status 200 and success=true", done => {
         chai
             .request(server)
-            .get("/employees/"+emptest.TestData5.Id)
+            .get("/employees/"+empInput.TestData5.Id)
             .set('Authorization', 'Bearar ' + jwToken)
             .end((err, response) => {
                 response.should.have.status(200);

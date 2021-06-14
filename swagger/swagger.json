@@ -44,7 +44,7 @@
       "/employees": {
         "get": {
           "tags": [],
-          "description": "To Retrive all the data",
+          "description": "",
           "parameters": [
   
           ],
@@ -72,7 +72,7 @@
       "/employees/{employeeId}": {
         "get": {
           "tags": [],
-          "description": "Reterive the data by using employeeId",
+          "description": "",
           "parameters": [
             {
               "name": "employeeId",
@@ -108,7 +108,7 @@
       "/update/{employeeId}": {
         "put": {
           "tags": [],
-          "description": "Update the data by using employeeId",
+          "description": "",
           "parameters": [
             {
               "name": "employeeId",
@@ -152,7 +152,7 @@
       "/delete/{employeeId}": {
         "delete": {
           "tags": [],
-          "description": "delete the data bu using employeeId",
+          "description": "",
           "parameters": [
             {
               "name": "employeeId",
