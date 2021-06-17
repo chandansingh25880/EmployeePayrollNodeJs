@@ -1,27 +1,29 @@
 {
-    "TestData1": {
+    "EmpLoginPos": {
         "emailId": "mohan@gmail.com",
         "password": "Mohan1997@#"
     },
-    "TestData2": {
+    "EmpLoginNeg": {
         "emailId": "raj@gmail.com",
         "password": "Raj1997@#"
     },
-    "TestData3": {
+    "EmpRegistrationPos": {
         "firstName": "Chandan",
         "lastName": "Singh",
         "emailId": "chandan.1sep1997@gmail.com",
         "password": "Chandan1997@#"
     },
-    "TestData4": {
+    "EmpRegistrationNeg": {
         "firstName": "Ramesh",
         "lastName": "Kashyap",
-        "emailId": "Kashyap@gmail.com"
+        "emailId": "Kashyap@gmail.com",
+        "password": "Chandan1997@#"
+
     },
-    "TestData5": {
+    "EmpGetPossitiveData": {
         "Id": "60c067d96890071fdc541940"
     }  ,
-    "TestData6": {
+    "EmpGetNegativeData": {
         "Id": "60c45bf31a06b63dd05a1d06"
     }      
 }

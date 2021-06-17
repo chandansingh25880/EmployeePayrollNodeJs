@@ -3,7 +3,7 @@ const employeeService = require('../service/employee.js');
 
 class Controll {
 
-/**
+/*
      * @description Create and save the new Employee Data after validation
      * @param req is request sent from http
      * @param res is used to send the Response
@@ -14,7 +14,7 @@ class Controll {
         if (validationResult.error) {
             return res.status(400).send({
                 message: validationResult.error.details[0].message
-            });
+            }); 
         }
         let userData = req.body;
         employeeService.create(userData, (error, resultdata) => {
@@ -31,7 +31,7 @@ class Controll {
         })
     }
 
-   /**
+   /*
      * @description find all the Employee Data
      * @param req is request sent from http
      * @param res is used to send the Response
@@ -77,7 +77,7 @@ class Controll {
         })
     }
 
- /**
+ /*
      * @description find one the Employee Data and Delete
      * @param req is request sent from http
      * @param res is used to send the Response
@@ -99,7 +99,7 @@ class Controll {
         })
     };
 
-   /**
+   /*
       * @description update Employee Data by using Id after the data validation
       * @param req is request sent from http
       * @param res is used to send the Response
@@ -147,7 +147,7 @@ class Controll {
             }
             res.send({
                 success: true,
-                message: "loged in successfully",
+                message: "logged in successfully",
                 token: data
             });
         })
